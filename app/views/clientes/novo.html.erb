@@ -1,0 +1,12 @@
+<h1> Cadastrar Cliente </h1>
+
+<div class="form">
+<%= form_for(@cliente_novo) do |f| %>
+	<p> Nome: 
+	<%= f.text_field :nome %>
+	<p>
+	<p> Enredeco: 
+	<%= f.select :endereco_id , @endereco.collect { |a| [a.endereco + ", " + a.bairro + ", " + a.cidade + ", " + a.uf , a.id]}%> Nº: <%= f.text_field :endereco_n, :size => "5" %> <%= link_to "Cadastrar", "#" %>
+	<p>
+<% end %>
+</div>
