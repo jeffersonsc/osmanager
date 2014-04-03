@@ -1,0 +1,67 @@
+<table>
+	<% @exibir_clientes.each do |cliente| %>	
+			<tr>
+				<td> Nome</td>
+				<td> <%= cliente.nome %> </td>
+			</tr>
+			<tr>
+				<td> Endereço </td>
+				<td> <%= cliente.endereco %> </td>
+			</tr>
+			<tr>
+				<td> Nº: </td>
+				<td> <%= cliente.endereco_n %> </td>
+			</tr>
+			<tr>				
+				<td> Bairro </td>
+				<td> <%= cliente.bairro %> </td>
+			</tr>
+			<tr>
+				<td> Cidade </td>
+				<td> <%= cliente.cidade %> </td>
+			</tr>
+			<tr>
+				<td> Estado </td>
+				<td> <%= cliente.uf %> </td>
+			</tr>
+			<tr>
+				<td> Telefone 1</td>
+				<td> <%= cliente.telefone1 %> </td>
+			</tr>
+			<tr>
+				<td> Telefone 2</td>
+				<td> <%= cliente.telefone2 %> </td>
+			</tr>
+			<tr>
+				<td> Telefone 3</td>
+				<td> <%= cliente.telefone3 %> </td>
+			</tr>
+			<tr>
+				<td> Celular </td>
+				<td> <%= cliente.celular %> </td>
+			</tr>
+			<tr>
+				<td> RG </td>
+				<td> <%= cliente.rg %> </td>
+			</tr>
+			<tr>
+				<td> Tipo Cliente</td>
+				<td> <%= cliente.tp_cliente %> </td>
+			</tr>
+			<tr>
+				<td> Status cliente </td>
+				<td>
+				<% if cliente.status == true %>
+					Ativo
+					<% else %>
+					Bloqueado
+				<% end %>
+				<td>
+			</tr>
+			<tr>
+				<td> Ultima alteração </td>
+				<td> <%= cliente.ultima_alteracao %></td>
+			</tr>
+			<% end %>
+</table>
+<%= link_to 'Editar' , action: 'editar', id: params[:id]  %>

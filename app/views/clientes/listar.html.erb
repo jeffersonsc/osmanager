@@ -1,0 +1,46 @@
+<h1> Lista de clientes </h1>
+
+
+	<table>
+		<tr>
+			<td> Nome</td>
+			<td> Endereço </td>
+			<td> Nº</td>
+			<td> Bairro </td>
+			<td> Cidade </td>
+			<td> Estado </td>
+			<td> Telefone 1</td>
+			<td> Telefone 2</td>
+			<td> Telefone 3</td>
+			<td> Celular </td>
+			<td> RG </td>
+			<td> Tipo Cliente</td>
+			<td> Status cliente </td>
+			<td> Ultima alteração </td>
+		</tr>
+	<% @lista_clientes.each do |cliente| %>		
+		<tr>
+			<td> <%= cliente.nome %> </td>
+			<td> <%= cliente.endereco %> </td>
+			<td> <%= cliente.endereco_n %> </td>
+			<td> <%= cliente.bairro %> </td>
+			<td> <%= cliente.cidade %> </td>
+			<td> <%= cliente.uf %> </td>
+			<td> <%= cliente.telefone1 %> </td>
+			<td> <%= cliente.telefone2 %> </td>
+			<td> <%= cliente.telefone3 %> </td>
+			<td> <%= cliente.celular %> </td>
+			<td> <%= cliente.rg %> </td>
+			<td> <%= cliente.tp_cliente %> </td>
+			<td>
+				<% if cliente.status == true %>
+					Ativo
+					<% else %>
+					Bloqueado
+				<% end %>
+			<td>
+			<td> <%= cliente.ultima_alteracao %></td>
+			<td> <%= link_to 'Editar' , action: 'exibir' , id: cliente.id %> </td>
+		</tr>
+	<% end %>
+</table>
