@@ -1,3 +1,5 @@
+<h1> Cliente: <%= @exibir_clientes[0].nome %> </h1> 
+<div class="form">
 <table>
 	<% @exibir_clientes.each do |cliente| %>	
 			<tr>
@@ -6,11 +8,7 @@
 			</tr>
 			<tr>
 				<td> Endereço </td>
-				<td> <%= cliente.endereco %> </td>
-			</tr>
-			<tr>
-				<td> Nº: </td>
-				<td> <%= cliente.endereco_n %> </td>
+				<td> <%= cliente.endereco %>, <%= cliente.endereco_n %> </td>
 			</tr>
 			<tr>				
 				<td> Bairro </td>
@@ -18,12 +16,8 @@
 			</tr>
 			<tr>
 				<td> Cidade </td>
-				<td> <%= cliente.cidade %> </td>
-			</tr>
-			<tr>
-				<td> Estado </td>
-				<td> <%= cliente.uf %> </td>
-			</tr>
+				<td> <%= cliente.cidade %> UF: <%= cliente.uf %> </td>
+			</tr>			
 			<tr>
 				<td> Telefone 1</td>
 				<td> <%= cliente.telefone1 %> </td>
@@ -59,9 +53,18 @@
 				<td>
 			</tr>
 			<tr>
+				<td> Criado em </td>
+				<td> <%= cliente.dt_cadastro.strftime('%d/%m/%Y as %H:%M') %></td>
+			</tr>
+			<tr>
 				<td> Ultima alteração </td>
-				<td> <%= cliente.ultima_alteracao %></td>
+				<td> <% if cliente.ultima_alteracao == nil %>
+					<% else %>
+					<%= cliente.ultima_alteracao.strftime('%d/%m/%Y as %H:%M')%> 
+					<% end %>
+				</td>
 			</tr>
 			<% end %>
 </table>
-<%= link_to 'Editar' , action: 'editar', id: params[:id]  %>
+<%= link_to 'Editar' , action: 'editar', id: params[:id] %>
+</div>
