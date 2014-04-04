@@ -67,4 +67,5 @@
 			<% end %>
 </table>
 <%= link_to 'Editar' , action: 'editar', id: params[:id] %>
+<%= link_to 'Deletar' ,action: 'deletar', id: params[:id] , data: { confirm: 'Deseja excluir cliente' } %>
 </div>

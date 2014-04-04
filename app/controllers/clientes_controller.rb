@@ -33,51 +33,49 @@ class ClientesController < ApplicationController
 	end
 	def listar
 		@lista_clientes = Cliente.find_by_sql("
-			SELECT
-				clientes.id,
-				clientes.nome,				
-				tipos_cliente.nome tp_cliente,
-				clientes.status,
-				clientes.dt_cadastro,
-				clientes.ultima_alteracao
-			FROM
-				clientes
-				INNER JOIN tipos_cliente ON tipos_cliente.id = clientes.tp_cliente_id
+				SELECT
+					clientes.id,
+					clientes.nome,				
+					tipos_cliente.nome tp_cliente,
+					clientes.status,
+					clientes.dt_cadastro,
+					clientes.ultima_alteracao
+				FROM
+					clientes
+					INNER JOIN tipos_cliente ON tipos_cliente.id = clientes.tp_cliente_id
 
-			ORDER BY
-				clientes.id ;
-
-		")
+				ORDER BY
+					clientes.id ;
+		")	
 	end
-	def exibir
-		@exibir_clientes = Cliente.find_by_sql("
-			SELECT
-				clientes.id,
-				clientes.nome,
-				logradouros.endereco,
-				clientes.endereco_n,
-				logradouros.bairro,
-				logradouros.cidade,
-				logradouros.uf,
-				clientes.telefone1,
-				clientes.telefone2,
-				clientes.telefone3,
-				clientes.celular,
-				clientes.rg,
-				tipos_cliente.nome tp_cliente,
-				clientes.status,
-				clientes.dt_cadastro,
-				clientes.ultima_alteracao
-			FROM
-				clientes
-				INNER JOIN logradouros ON logradouros.id = clientes.endereco_id
-				INNER JOIN tipos_cliente ON tipos_cliente.id = clientes.tp_cliente_id
+	def exibir			
+			@exibir_clientes = Cliente.find_by_sql("
+				SELECT
+					clientes.id,
+					clientes.nome,
+					logradouros.endereco,
+					clientes.endereco_n,
+					logradouros.bairro,
+					logradouros.cidade,
+					logradouros.uf,
+					clientes.telefone1,
+					clientes.telefone2,
+					clientes.telefone3,
+					clientes.celular,
+					clientes.rg,
+					tipos_cliente.nome tp_cliente,
+					clientes.status,
+					clientes.dt_cadastro,
+					clientes.ultima_alteracao
+				FROM
+					clientes
+					INNER JOIN logradouros ON logradouros.id = clientes.endereco_id
+					INNER JOIN tipos_cliente ON tipos_cliente.id = clientes.tp_cliente_id
 
-			WHERE
-				clientes.id = #{params[:id]}
-			
-
-		")
+				WHERE
+					clientes.id = #{params[:id]}
+			")
+		
 
 	end
 	def  editar
@@ -105,5 +103,16 @@ class ClientesController < ApplicationController
 		")
 		flash[:notice] = "Cliente alterado com sucesso"
 		redirect_to action: 'editar' , id: params[:id]
+	end
+
+	def deletar
+		@deleta_cliente = Cliente.find_by_sql("
+			UPDATE clientes
+			SET status='false' , ultima_alteracao='#{Time.now}'
+			WHERE id = #{params[:id]}
+
+		")
+		flash[:alert] = "Você excluio o cliente de id #{params[:id]} ele ficará bloqueado"
+		redirect_to action: 'listar'
 	end
 end

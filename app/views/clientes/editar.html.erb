@@ -11,10 +11,10 @@
 
 	<p> Cliente status:
 		<% if @editar_cliente[0].status == false %>			
-			<%= f.radio_button :status ,'true'  %>
+			<%= f.radio_button :status ,true  %>
 			<%= label :status, 'Ativar Cliente' %>
 				<% else  %>			
-			<%= f.radio_button :status ,'false'  %>
+			<%= f.radio_button :status ,false  %>
 			<%= label :status, 'Bloquear cliente' %>
 		<% end %>		
 	</p>
