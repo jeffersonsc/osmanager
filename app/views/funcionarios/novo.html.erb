@@ -1,0 +1,26 @@
+<h1> Cadastrar Funcionario </h1>
+
+<div class="form">
+<%= form_for(@funcionario_novo) do |f| %>
+	<p> Nome: 
+	<%= f.text_field :nome %>
+	<p>
+	<p> Enredeco: 
+	<%= f.select :endereco_id , @endereco.collect { |a| [a.endereco + ", " + a.bairro + ", " + a.cidade + ", " + a.uf , a.id]}%> Nº: <%= f.text_field :endereco_n, :size => "5" %> <%= link_to "Cadastrar", "#" %>
+	<p>
+	<p> RG:
+		<%= f.text_field :rg%>		
+	</p>
+	<p> Telefone 1:
+		<%= f.text_field :telefone1 %>		
+	</p>
+	<p> Telefone 2:
+		<%= f.text_field :telefone2 %>		
+	</p>
+	<p> Celular:
+		<%= f.text_field :celular %>		
+	</p>
+	
+	<%= f.submit 'Salvar' %>
+<% end %>
+</div>

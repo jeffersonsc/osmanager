@@ -1,0 +1,30 @@
+<h1> Listar Funcionarios </h1>
+
+<table>
+		<tr>
+			<td> Nome</td>						
+			<td> Cadastrado em </td>
+			<td> Ultima alteração </td>
+		</tr>
+	<% @lista_funcionarios.each do |funcionario| %>		
+		<tr>
+			<td> <%= funcionario.nome %> </td>			
+			
+			<td> 				
+				<%= funcionario.dt_cadastro.strftime('%d/%m/%Y as %H:%M')%> 
+			</td>
+
+			<td> 
+				<% if funcionario.ultima_alteracao == nil %>
+
+				<% else %>
+				<%= funcionario.ultima_alteracao.strftime('%d/%m/%Y as %H:%M')%> 
+				<% end %>
+			</td>
+				
+			<td> <%= link_to 'Exibir detalhes' , action: 'exibir' , id: funcionario.id %> </td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Cadastrar funcionario', action: 'novo' %>

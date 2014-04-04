@@ -1,0 +1,65 @@
+<h1> Funcionario</h1> 
+<div class="form">
+<table>
+	<% @exibir_funcionarios.each do |funcionario| %>	
+			<tr>
+				<td> Nome: </td>
+				<td> <%= funcionario.nome %> </td>
+			</tr>
+			<tr>
+				<td> Endereço: </td>
+				<td> <%= funcionario.endereco %>, <%= funcionario.endereco_n %> </td>
+			</tr>
+			<tr>				
+				<td> Bairro: </td>
+				<td> <%= funcionario.bairro %> </td>
+			</tr>
+			<tr>
+				<td> Cidade: </td>
+				<td> <%= funcionario.cidade %> </td>
+				<td> UF: <%= funcionario.uf %> </td>
+			</tr>			
+			<tr>
+				<td> Telefone 1:</td>
+				<td> <%= funcionario.telefone1 %> </td>
+			</tr>
+			<tr>
+				<td> Telefone 2: </td>
+				<td> <%= funcionario.telefone2 %> </td>
+			</tr>
+			<tr>			
+				<td> Celular: </td>
+				<td> <%= funcionario.celular %> </td>
+			</tr>
+			<tr>
+				<td> RG: </td>
+				<td> <%= funcionario.rg %> </td>
+			</tr>			
+			<tr>
+				<td> Status funcionario: </td>
+				<td>
+				<% if funcionario.status == true %>
+					Ativo
+					<% else %>
+					Bloqueado
+				<% end %>
+				<td>
+			</tr>
+			<tr>
+				<td> Criado em: </td>
+				<td> <%= funcionario.dt_cadastro.strftime('%d/%m/%Y as %H:%M') %></td>
+			</tr>
+			<tr>
+				<td> Ultima alteração: </td>
+				<td> <% if funcionario.ultima_alteracao == nil %>
+					<% else %>
+					<%= funcionario.ultima_alteracao.strftime('%d/%m/%Y as %H:%M')%> 
+					<% end %>
+				</td>
+			</tr>
+			<% end %>
+</table>
+<%= link_to 'Editar' , action: 'editar', id: params[:id] %>
+<%= link_to 'Deletar' ,action: 'deletar', id: params[:id] , data: { confirm: 'Deseja excluir funcionario' } %>
+</div>
+<%= link_to 'Voltar', action: 'listar' %>

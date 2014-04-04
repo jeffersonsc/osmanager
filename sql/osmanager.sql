@@ -127,6 +127,16 @@ produto_id integer,
  FOREIGN KEY (produto_id) REFERENCES produtos(id)
 );
 
+CREATE TABLE login (
+id serial PRIMARY KEY NOT NULL,
+funcionario_id integer,
+usuario varchar(20), 
+senha varchar(10) DEFAULT '12345678',
+criado_em timestamp,
+alterado_em timestamp,
+	FOREIGN KEY (funcionario_id) REFERENCES funcionarios(id)
+);
+
 COMMIT;
 
 INSERT INTO tipos_pagamento (nome) VALUES ('Cartão Débito');

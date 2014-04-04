@@ -1,5 +1,8 @@
 class ClientesController < ApplicationController
 
+	def index
+		redirect_to action: 'listar'
+	end
 	def novo
 		@cliente_novo = Cliente.new
 		@endereco = Logradouro.find_by_sql("
