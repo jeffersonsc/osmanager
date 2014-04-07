@@ -2,14 +2,20 @@
 
 <table>
 		<tr>
-			<td> Nome</td>						
+			<td> Nome </td>	
+			<td> Status </td>					
 			<td> Cadastrado em </td>
 			<td> Ultima alteração </td>
 		</tr>
 	<% @lista_funcionarios.each do |funcionario| %>		
 		<tr>
 			<td> <%= funcionario.nome %> </td>			
-			
+			<td> <% if funcionario.status == true %>
+				Ativo
+				<% else %> 
+				Bloqueado
+				<% end %>
+			</td>
 			<td> 				
 				<%= funcionario.dt_cadastro.strftime('%d/%m/%Y as %H:%M')%> 
 			</td>

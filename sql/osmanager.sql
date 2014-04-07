@@ -30,6 +30,7 @@ tp_cliente_id integer,
 rg varchar(20),
 status boolean DEFAULT true,
 dt_cadastro timestamp,
+ultima_alteracao timestamp,
  FOREIGN KEY (endereco_id) REFERENCES logradouros(id),
  FOREIGN KEY (tp_cliente_id) REFERENCES tipos_cliente (id)
 );
@@ -49,7 +50,12 @@ endereco_n integer,
 rg varchar(20),
 status boolean DEFAULT true,
 dt_cadastro timestamp,
- FOREIGN KEY (endereco_id) REFERENCES logradouros(id)
+ultima_alteracao timestamp,
+telefone1 varchar(20),
+telefone2 varchar(20),
+cargo_id integer,
+ FOREIGN KEY (endereco_id) REFERENCES logradouros(id),
+ FOREIGN KEY (cargo_id) REFERENCES cargos(id)
 );
 
 CREATE TABLE tipos_pagamento (

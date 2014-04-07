@@ -5,7 +5,7 @@
 	
 	<p> funcionario status:
 		<% if @editar_funcionarios[0].status == false %>			
-			<%= f.radio_button :status ,true  %>
+			<%= f.radio_button :status , 'true'  %>
 			<%= label :status, 'Ativar funcionario' %>
 			<% else %>
 			Funcionario Ativo

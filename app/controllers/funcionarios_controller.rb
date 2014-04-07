@@ -52,17 +52,37 @@ class FuncionariosController < ApplicationController
 		@editar_funcionarios = Funcionario.find_by_sql("SELECT * FROM funcionarios WHERE id = #{params[:id]}")
 	end
 	def update
+		if params[:status] ||= nil
+			status = "false"
+		else
+			status = "true"
+		end
 		@editar_funcionarios = Funcionario.find_by_sql("
 			UPDATE 
 				funcionarios
 			SET
 				nome = '#{params[:funcionario][:nome]}', endereco_id = '#{params[:funcionario][:endereco_id]}', endereco_n = '#{params[:funcionario][:endereco_n]}', telefone1 = '#{params[:funcionario][:telefone1]}',
 					telefone2 = '#{params[:funcionario][:telefone2]}', celular = '#{params[:funcionario][:celular]}', rg = '#{params[:funcionario][:rg]}' ,
-					 ultima_alteracao = '#{Time.now}'
+					 ultima_alteracao = '#{Time.now}' , status='#{status}'
 			WHERE 
 				funcionarios.id = #{params[:id]}
 		")
-		flash[:notice] = "Usuaário alterado com sucesso"
+		flash[:notice] = "Usuário alterado com sucesso"
 		redirect_to action: 'exibir', id: params[:id]
+	end
+	def deletar
+		@delete_funcionario = Funcionario.find_by_sql("
+			UPDATE
+				funcionarios
+			SET
+				status='false'
+			WHERE
+				id = '#{params[:id]}'
+		")
+		redirect_to action: 'listar'
+		flash[:alert] = "Você deletou um funcionario"
+	end
+	def index
+		redirect_to action: 'listar'
 	end
 end
