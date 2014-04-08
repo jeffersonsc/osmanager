@@ -42,6 +42,12 @@ custo decimal(10,2),
 status boolean DEFAULT true
 );
 
+CREATE TABLE cargos (
+id serial PRIMARY KEY NOT NULL,
+nome varchar(40),
+dt_cadastro timestamp
+);
+
 CREATE TABLE funcionarios (
 id serial PRIMARY KEY NOT NULL,
 nome varchar(60),
@@ -83,13 +89,7 @@ quant integer,
 dt_cadastro timestamp
 );
 
-CREATE TABLE cargos (
-id serial PRIMARY KEY NOT NULL,
-funcionario_id integer,
-nome varchar(40),
-dt_cadastro timestamp,
-FOREIGN KEY (funcionario_id) REFERENCES funcionarios (id)
-);
+
 
 CREATE TABLE ordem_servicos (
 id serial PRIMARY KEY NOT NULL,
