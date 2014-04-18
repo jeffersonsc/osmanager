@@ -1,5 +1,5 @@
-<div class="form">
-<%= form_for(@cliente_novo) do |f| %>
+
+<%=form_for(@cliente_novo) do |f| %>
 	<p> Tipo de cliente:
 		<%= f.radio_button :tp_cliente_id ,'1' , :checked => true %>
 			<%= label :tp_cliente_id, 'Pessoa Física' %>	
@@ -30,5 +30,3 @@
 	</p>
 		<%= f.submit 'Salvar' %>
 <% end %>
-</div>
-

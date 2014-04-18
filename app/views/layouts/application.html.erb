@@ -13,7 +13,7 @@
 </head>
 <body>
 	<% flash.each do |tipo , msg|%>
-		<div class="#{tipo}"> <%= msg %> </div>
+		<div class="#{tipo}"> <%= msg %><%= image_tag("icones/OK.ico") %> </div>
 	<% end %>
 
 <%= yield %>

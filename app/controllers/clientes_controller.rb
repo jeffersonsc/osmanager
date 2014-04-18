@@ -19,26 +19,32 @@ class ClientesController < ApplicationController
 
 	def create
 
-		@criar_cliente = Cliente.find_by_sql("
-			INSERT INTO
-				clientes
-				( nome, endereco_id , endereco_n , telefone1 , telefone2 , telefone3 , celular , rg , tp_cliente_id, dt_cadastro)
-			VALUES
-				('#{params[:cliente][:nome]}', '#{params[:cliente][:endereco_id]}', '#{params[:cliente][:endereco_n]}', '#{params[:cliente][:telefone1]}',
-					'#{params[:cliente][:telefone2]}', '#{params[:cliente][:telefone3]}', '#{params[:cliente][:celular]}', '#{params[:cliente][:rg]}' ,
-					 '#{params[:cliente][:tp_cliente_id]}' , '#{Time.now}' )
+		query = "INSERT INTO clientes
+			(endereco_id , endereco_n , telefone1 , telefone2 , telefone3 , celular , tp_cliente_id, dt_cadastro , 
+			"
+		if params[:cliente][:tp_cliente_id] == "1"
+			query	<< " nome, rg , cpf )"
+			query_data = "'#{params[:cliente][:nome]}' , '#{params[:cliente][:rg]}' , '#{params[:cliente][:cpf]}'"
+		else
+			query	<< " raz_social, cnpj )"
+			query_data = "'#{params[:cliente][:raz_social]}' , '#{params[:cliente][:cnpj]}'"
+		end
+			query << "VALUES
+			('#{params[:cliente][:endereco_id]}', '#{params[:cliente][:endereco_n]}', '#{params[:cliente][:telefone1]}',
+			'#{params[:cliente][:telefone2]}', '#{params[:cliente][:telefone3]}', '#{params[:cliente][:celular]}',
+			'#{params[:cliente][:tp_cliente_id]}' , '#{Time.now}' , #{query_data})"
 
-		")
-		@teste = Cliente.find( :last )
-				flash[:notice] = "Cliente slavo com sucesso!"
-				redirect_to action: 'listar' 
+		@criar_cliente = Cliente.find_by_sql(query)
+			flash[:notice] = "Cliente slavo com sucesso!"
+			redirect_to action: 'listar' 
 			
 	end
 	def listar
 		@lista_clientes = Cliente.find_by_sql("
 				SELECT
 					clientes.id,
-					clientes.nome,				
+					clientes.nome,
+					clientes.raz_social,				
 					tipos_cliente.nome tp_cliente,
 					clientes.status,
 					clientes.dt_cadastro,
@@ -56,6 +62,7 @@ class ClientesController < ApplicationController
 				SELECT
 					clientes.id,
 					clientes.nome,
+					clientes.raz_social,
 					logradouros.endereco,
 					clientes.endereco_n,
 					logradouros.bairro,
@@ -66,7 +73,10 @@ class ClientesController < ApplicationController
 					clientes.telefone3,
 					clientes.celular,
 					clientes.rg,
+					clientes.cpf,
+					clientes.cnpj,
 					tipos_cliente.nome tp_cliente,
+					clientes.tp_cliente_id,
 					clientes.status,
 					clientes.dt_cadastro,
 					clientes.ultima_alteracao
@@ -108,14 +118,22 @@ class ClientesController < ApplicationController
 		redirect_to action: 'editar' , id: params[:id]
 	end
 
-	def deletar
+	def bloquear
 		@deleta_cliente = Cliente.find_by_sql("
 			UPDATE clientes
 			SET status='false' , ultima_alteracao='#{Time.now}'
-			WHERE id = #{params[:id]}
-
+			WHERE id = #{params[:cliente_id]}
 		")
-		flash[:alert] = "Você excluio o cliente de id #{params[:id]} ele ficará bloqueado"
+		flash[:alert] = "Você bloqueou o cliente"
+		redirect_to action: 'listar'
+	end
+	def desbloquear
+		@deleta_cliente = Cliente.find_by_sql("
+			UPDATE clientes
+			SET status='true' , ultima_alteracao='#{Time.now}'
+			WHERE id = #{params[:cliente_id]}
+		")
+		flash[:alert] = "Você liberou o cliente"
 		redirect_to action: 'listar'
 	end
 end

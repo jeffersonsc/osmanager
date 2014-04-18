@@ -1,6 +1,9 @@
 <h1> Lista de clientes </h1>
 
-
+<%= link_to image_tag("icones/add.ico"),  { action: 'novo', :controller => "clientes" , tp_cliente: "fisica"} %>
+<%= link_to "Cadastrar cliente PF",  { action: 'novo', :controller => "clientes" , tp_cliente: "fisica"} %>
+<%= link_to image_tag("icones/add.ico"), { action: 'novo', :controller => "clientes" , tp_cliente: "juridica"} %>
+<%= link_to "Cadastrar cliente PJ", { action: 'novo', :controller => "clientes" , tp_cliente: "juridica"} %>
 	<table>
 		<tr>
 			<td> Nome</td>			
@@ -11,13 +14,13 @@
 		</tr>
 	<% @lista_clientes.each do |cliente| %>		
 		<tr>
-			<td> <%= cliente.nome %> </td>			
+			<td> <%= cliente.nome %><%= cliente.raz_social %> </td>			
 			<td> <%= cliente.tp_cliente %> </td>
 			<td>
 				<% if cliente.status == true %>
-					Ativo
+						<%=link_to image_tag("icones/apply.ico") , { :action => 'bloquear' , :controller => 'clientes', cliente_id: cliente.id }%>
 					<% else %>
-					Bloqueado
+						<%= link_to image_tag("icones/erase.ico") , { :action => 'desbloquear' , :controller => 'clientes', cliente_id: cliente.id }%>
 				<% end %>
 			</td>
 			<td> 				
@@ -36,4 +39,3 @@
 	<% end %>
 </table>
 
-<%= link_to 'Cadastrar cliente', action: 'novo' %>

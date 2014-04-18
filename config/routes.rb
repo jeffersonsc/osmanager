@@ -4,7 +4,8 @@ OsmanagerApp::Application.routes.draw do
  get "clientes/listar"
  get "clientes/editar"
  get "clientes/exibir"
- get "clientes/deletar"
+ get "clientes/bloquear"
+ get "clientes/desbloquear"
 
  get "funcionarios/novo"
  get "funcionarios/listar"
@@ -12,7 +13,10 @@ OsmanagerApp::Application.routes.draw do
  get "funcionarios/editar"
  get "funcionarios/deletar"
 
+ get "menu/index"
+
  resources :clientes
  resources :funcionarios
+ resources :menu
 
 end
