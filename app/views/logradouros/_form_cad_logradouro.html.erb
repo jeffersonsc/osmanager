@@ -1,0 +1,10 @@
+<%= form_for(@novo_logradouro) do |f| %>
+	
+	Endereco: <%= f.text_field :endereco %><br />
+	Bairro: <%= f.text_field :bairro %> <br />
+	Cidade: <%= f.text_field :cidade %> <br />
+	Estado: <%= f.select :uf ,@uf.collect{|uf| [uf.abr] } %> <br />
+
+	<%= f.submit "Salvar" %>
+
+<%end%>

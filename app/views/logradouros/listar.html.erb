@@ -1,0 +1,26 @@
+<h2> logradouros </h2>
+
+<%= link_to "Cadastrar" , :controller => "logradouros" , :action => "novo" %>
+
+<table>
+	<tr>
+		<th> ID </th>
+		<th> Endereço </th>
+		<th> Bairro </th>
+		<th> Cidade </th>
+		<th> UF </th>
+		<th> Status </th>
+	</tr>
+
+	<% @listar_logradouros.each do |listar| %>
+		<tr>
+			<td> <%= listar.id %> </td>
+			<td> <%= listar.endereco %> </td>
+			<td> <%= listar.bairro %> </td>
+			<td> <%= listar.cidade %> </td>
+			<td> <%= listar.uf %> </td>
+			<td> <%= listar.status %> </td>
+		</tr>
+	<% end %>
+
+</table>
