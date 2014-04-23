@@ -4,7 +4,7 @@ development:
   encoding: unicode
   database: osmanagerdb
   pool: 5
-  username: jefferson-descktop
+  username: jefferson
   password: je@14051994
 
 test:
@@ -12,6 +12,6 @@ test:
   encoding: unicode
   database: osmanagerdb_test
   pool: 5
-  username: jefferson-descktop
+  username: jefferson
   password: je@14051994
 

@@ -10,6 +10,7 @@
 		<th> Cidade </th>
 		<th> UF </th>
 		<th> Status </th>
+		<th> Exibir </th>
 	</tr>
 
 	<% @listar_logradouros.each do |listar| %>
@@ -20,6 +21,7 @@
 			<td> <%= listar.cidade %> </td>
 			<td> <%= listar.uf %> </td>
 			<td> <%= listar.status %> </td>
+			<td> <%= link_to "Detalhes" , action: 'exibir' , logradouro_id: => listar.id %>
 		</tr>
 	<% end %>
 

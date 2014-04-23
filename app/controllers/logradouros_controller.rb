@@ -4,7 +4,7 @@ class LogradourosController < ApplicationController
 	end
 
 	def novo
-		@novo_logradouro = Logradouro.new
+		@logradouro = Logradouro.new
 		@uf = Tipouf.all
 	end
 
@@ -17,7 +17,15 @@ class LogradourosController < ApplicationController
 		@novo_logradouro = Logradouro.find_by_sql(query)
 		flash[:notice] = "Logradouro cadastrado com sucesso"
 		redirect_to action: 'listar'
-
 	end
+	def exibir
+		@logradouro = Logradouro.where("id = '#{params[:logradouro_id]}'")
+	end
+
+	def editar
+		@logradouro = Logradouro.where("id = '#{params[:logradouro_id]}'")
+		@uf = Tipouf.all
+	end
+
 
 end

@@ -1,0 +1,12 @@
+<% @logradouro.each do |listar| %>
+	<table>
+		<tr>
+			<td> <%= listar.id %> </td>
+			<td> <%= listar.endereco %> </td>
+			<td> <%= listar.bairro %> </td>
+			<td> <%= listar.cidade %> </td>
+			<td> <%= listar.uf %> </td>
+			<td> <%= listar.status %> </td>
+		</tr>
+	</table>
+	<% end %>
