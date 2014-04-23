@@ -15,8 +15,15 @@ OsmanagerApp::Application.routes.draw do
 
  get "menu/index"
 
+ get "logradouros/novo"
+ get "logradouros/listar"
+ get "logradouros/exibir"
+ get "logradouros/editar"
+
  resources :clientes
  resources :funcionarios
  resources :menu
+ resources :logradouros
+ 
 
 end

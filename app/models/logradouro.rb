@@ -1,4 +1,4 @@
-class Logradouro <ActiveRecord::Base
+class Logradouro < ActiveRecord::Base
 
 self.table_name = 'logradouros'
 end

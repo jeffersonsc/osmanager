@@ -1,15 +1,13 @@
-<h3> Editar logradouro </h3>
+<% if params[:action] == "novo" %>
 
-<%= form_for(@editar_logradouro) do |f| %>
+	<%= form_for(@novo_logradouro) do |f| %>
 		
 		Endereco: <%= f.text_field :endereco %><br />
 		Bairro: <%= f.text_field :bairro %> <br />
 		Cidade: <%= f.text_field :cidade %> <br />
 		Estado: <%= f.select :uf , @uf.collect{|uf| [uf.abr] } %> <br />
-		
-		Bloquear: <%= f.check_box :status %> (Quando marcado o operador não pode vizualizar)
-		
-		<br />
+
 		<%= f.submit "Salvar" %>
 
 	<%end%>
+<% end %>

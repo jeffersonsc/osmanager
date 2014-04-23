@@ -1,12 +1,25 @@
-<% @logradouro.each do |listar| %>
-	<table>
+<table>
+
+	<% @logradouro.each do |listar| %>
 		<tr>
-			<td> <%= listar.id %> </td>
-			<td> <%= listar.endereco %> </td>
-			<td> <%= listar.bairro %> </td>
-			<td> <%= listar.cidade %> </td>
-			<td> <%= listar.uf %> </td>
-			<td> <%= listar.status %> </td>
+			<td> ID  <%= listar.id %> </td>
 		</tr>
-	</table>
+		<tr>
+			<td> Endereço: <%= listar.endereco %> </td>
+		</tr>
+		<tr>
+			<td> Bairro: <%= listar.bairro %>  </td>
+		</tr>
+		<tr>
+			<td> Cidade: <%= listar.cidade %> </td>
+		</tr>
+		<tr>
+			<td> UF: <%= listar.uf %> </td>
+		</tr>
+		<tr>
+			<td> Bloqueado: <%= listar.status %> </td>
+		</tr>
 	<% end %>
+</table>
+
+<%= link_to "Editar" , action: 'editar' , :id => params[:logradouro_id] %>

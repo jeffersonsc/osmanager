@@ -5,16 +5,7 @@ class ClientesController < ApplicationController
 	end
 	def novo
 		@cliente_novo = Cliente.new
-		@endereco = Logradouro.find_by_sql("
-			SELECT
-				id,
-				endereco,
-				bairro,
-				cidade,
-				uf
-			FROM
-				logradouros
-		")
+		@endereco = Logradouro.where("status = 'true'")
 	end
 
 	def create

@@ -9,7 +9,8 @@ id serial PRIMARY KEY NOT NULL,
 endereco varchar(60),
 bairro varchar(50),
 cidade varchar(50),
-uf char(2)
+uf char(2),
+status boolean DEFAULT false
 );
 
 CREATE TABLE tipos_cliente (
