@@ -62,4 +62,4 @@
 <%= link_to 'Editar' , action: 'editar', id: params[:id] %>
 <%= link_to 'Deletar' ,action: 'deletar', id: params[:id] , data: { confirm: 'Deseja excluir funcionario' } %>
 </div>
-<%= link_to 'Voltar', action: 'listar' %>
+<%= link_to_function "Voltar" , "history.back()" %>

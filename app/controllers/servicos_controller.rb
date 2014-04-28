@@ -22,12 +22,13 @@ class ServicosController < ApplicationController
 	end
 
 	def editar
-		@servicos = Servico.find(params[:servico_id])
+		@editar_servico = Servico.find_by(id: params[:servico_id])
 	end
 
 	def update
-		servico_update = Servico.update( params[:servico_id] , :nome => params[:servico][:nome] ,
-		 :custo => params[:servico][:custo] , :status => [:servico][:status] , :ultima_alteracao => Time.now )
+		
+		servico_update = Servico.update(params[:id] , :nome => params[:servico][:nome] ,
+		 :custo => params[:servico][:custo] , :status => params[:servico][:status] , :ultima_alteracao => Time.now )
 		if servico_update.save
 			flash[:notice] = "Dados atualizado com sucesso!"
 			redirect_to action: 'listar'

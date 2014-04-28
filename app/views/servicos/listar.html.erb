@@ -8,8 +8,8 @@
 	<% @lista_servicos.each do |servicos| %>		
 		<tr>
 			<td> <%= servicos.nome %> </td>	
-			<td> <%= servicos.custo %> </td>			
-			<td> <% if servicos.status == true %>
+			<td> R$ <%= servicos.custo %> </td>			
+			<td> <% if servicos.status == false %>
 				Ativo
 				<% else %> 
 				Bloqueado
