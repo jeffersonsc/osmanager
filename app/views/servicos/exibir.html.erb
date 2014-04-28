@@ -1,0 +1,20 @@
+<table>
+
+	<% @listar_detalhe.each do |listar| %>
+		<tr>
+			<td> ID  <%= listar.id %> </td>
+		</tr>
+		<tr>
+			<td> Nome: <%= listar.nome %> </td>
+		</tr>
+		<tr>
+			<td> Custo: <%= listar.custo %>  </td>
+		</tr>
+		<tr>
+			<td> Status: <%= listar.status %> </td>
+		</tr>
+		<tr>
+			<td> Ultima Alteração: <%= listar.ultima_alteracao %> </td>
+		</tr>		
+	<% end %>
+</table>

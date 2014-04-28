@@ -3,12 +3,7 @@
 	Nome: <%= f.text_field :nome %><br />
 	Preço: R$ <%= f.text_field :custo %><br />
 	
-	<% if params[:action] == "novo" %>
+	
 	<%= f.submit "Criar"%>
-	<% else %>
-	<%= f.check_box :status %><br />
-	<%= f.submit "Editar"%>
-	<% end %>
-
-
+	
 <% end %>

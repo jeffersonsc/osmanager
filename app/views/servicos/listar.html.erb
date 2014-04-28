@@ -1,0 +1,27 @@
+<table>
+		<tr>
+			<td> Nome </td>	
+			<td> Custo </td>					
+			<td> Status </td>
+			<td> Ultima alteração </td>
+		</tr>
+	<% @lista_servicos.each do |servicos| %>		
+		<tr>
+			<td> <%= servicos.nome %> </td>	
+			<td> <%= servicos.custo %> </td>			
+			<td> <% if servicos.status == true %>
+				Ativo
+				<% else %> 
+				Bloqueado
+				<% end %>
+			</td>
+			<td>
+				<% if not servicos.ultima_alteracao.nil? %>				
+				<%= servicos.ultima_alteracao.strftime('%d/%m/%Y as %H:%M')%> 
+				<% end %>
+			</td>
+				
+			<td> <%= link_to 'Exibir detalhes' , action: 'exibir' , servico_id: servicos.id %> </td>
+		</tr>
+	<% end %>
+</table>

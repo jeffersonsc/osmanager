@@ -21,6 +21,8 @@ OsmanagerApp::Application.routes.draw do
  get "logradouros/editar"
 
  get "servicos/novo"
+ get "servicos/listar"
+ get "servicos/exibir"
  get "servicos/editar"
 
  resources :clientes

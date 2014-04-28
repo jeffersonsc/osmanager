@@ -1,0 +1,10 @@
+<%= form_for(@editar_servico) do |f| %>
+
+	Nome: <%= f.text_field :nome %><br />
+	Preço: R$ <%= f.text_field :custo %><br />
+	
+	<%= f.check_box :status %><br />
+	<%= f.submit "Editar"%>
+
+
+<% end %>
