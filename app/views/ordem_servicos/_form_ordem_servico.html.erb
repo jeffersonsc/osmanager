@@ -1,0 +1,5 @@
+<%= form_for(@nova_os) do |f| %>
+	Cliente: <%= f.select :cliente_id , @cliente_id.collect{ |cli| [cli.nome, cli.raz_social , cli.id] } %>	<br />
+	Tecnico: <%= f.select :funcionario_id , @funcionario_id.collect{ |fun| [fun.nome  , fun.id] } %> <br />
+
+<% end %>

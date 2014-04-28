@@ -25,11 +25,15 @@ OsmanagerApp::Application.routes.draw do
  get "servicos/exibir"
  get "servicos/editar"
 
+ get "ordem_servicos/novo"
+ get "ordem_servicos/listar"
+
  resources :clientes
  resources :funcionarios
  resources :menu
  resources :logradouros
  resources :servicos
+ resources :ordem_servicos
  
 
 end
