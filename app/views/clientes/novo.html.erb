@@ -1,8 +1,3 @@
 <h1> Cadastrar Cliente </h1>
 
-<% if params[:tp_cliente] == "fisica" %>
-	<%= render "form_cad_cliente_fisico" %>
-<% end %>
-<% if params[:tp_cliente] == "juridica" %>
-	<%= render "form_cad_cliente_juridico" %>
-<% end %>
+<%= render "form_clientes" %>

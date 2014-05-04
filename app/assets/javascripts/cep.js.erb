@@ -1,0 +1,23 @@
+
+$(document).ready( function(){
+	/* Configura requisição ajax quando o cep perde o focus */
+	$('#cep').blur(function(){
+		/* configura a requisição ajax*/
+		$.ajax({
+			url: '/lib/buscacep.rb' , /*url que sera requisitada*/
+			type: 'POST', 
+			data: 'cep=' + $('#cep').val(), /*dados que vai para o site*/
+			datatype: 'json',
+			success: function(data){
+				if (data.sucesso == 1){
+					$('#rua').val(data.rua);
+					$('#bairro').val(data.bairro);
+					$('#cidade').val(data.estado);
+
+					$('#numero').focus();
+				}
+			}			
+		});
+		return false
+	})
+});

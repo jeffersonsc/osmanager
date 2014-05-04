@@ -1,0 +1,9 @@
+instalação do sublme text
+    
+sudo add-apt-repository ppa:webupd8team/sublime-text-2
+sudo apt-get update
+sudo apt-get install sublime-text
+
+instalçao do postgresql versão atual 9,3
+
+sudo apt-get ou yum install postgresql postgresql-server postgresql-contrib libpq-devel

@@ -1,30 +1,17 @@
+require 'open-uri'
 class ClientesController < ApplicationController
 
 	def index
 		redirect_to action: 'listar'
 	end
+
 	def novo
 		@cliente_novo = Cliente.new
-		@endereco = Logradouro.where("status = 'true'")
 	end
 
 	def create
 
-		query = "INSERT INTO clientes
-			(endereco_id , endereco_n , telefone1 , telefone2 , telefone3 , celular , tp_cliente_id, dt_cadastro , 
-			"
-		if params[:cliente][:tp_cliente_id] == "1"
-			query	<< " nome, rg , cpf )"
-			query_data = "'#{params[:cliente][:nome]}' , '#{params[:cliente][:rg]}' , '#{params[:cliente][:cpf]}'"
-		else
-			query	<< " raz_social, cnpj )"
-			query_data = "'#{params[:cliente][:raz_social]}' , '#{params[:cliente][:cnpj]}'"
-		end
-			query << "VALUES
-			('#{params[:cliente][:endereco_id]}', '#{params[:cliente][:endereco_n]}', '#{params[:cliente][:telefone1]}',
-			'#{params[:cliente][:telefone2]}', '#{params[:cliente][:telefone3]}', '#{params[:cliente][:celular]}',
-			'#{params[:cliente][:tp_cliente_id]}' , '#{Time.now}' , #{query_data})"
-
+		
 		@criar_cliente = Cliente.find_by_sql(query)
 			flash[:notice] = "Cliente slavo com sucesso!"
 			redirect_to action: 'listar' 

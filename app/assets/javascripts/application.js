@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require cep
+//= require jquery-1.11.1
 //= require_tree .
 
 
