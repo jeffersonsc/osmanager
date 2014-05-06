@@ -1,0 +1,97 @@
+[33mcommit 7fe61fb372af93203713d787c84ef0b68786c412[m
+Author: Jefferson Cunha <jefferson.cunha@totalip.com.br>
+Date:   Fri Apr 25 16:07:12 2014 -0300
+
+    Criação de crud servico falata o update parsa liberar e bloquear
+    
+    Signed-off-by: Jefferson Cunha <jefferson.cunha@totalip.com.br>
+
+[33mcommit b879266943e420adab214934eef6eb478b341a42[m
+Author: Jefferson Cunha <jefferson.cunha@totalip.com.br>
+Date:   Wed Apr 23 16:17:09 2014 -0300
+
+    crud logradouros pronta alguns ajustes em cliente e routes e sql
+    
+    Signed-off-by: Jefferson Cunha <jefferson.cunha@totalip.com.br>
+
+[33mcommit 4d2e6cb10b377794d3a64ea364e8e3ee02af545b[m
+Author: Jefferson Cunha <jefferson.cunha@totalip.com.br>
+Date:   Wed Apr 23 10:04:31 2014 -0300
+
+    criação de crud logradouro falat o bloquear e desbloquear
+    
+    Signed-off-by: Jefferson Cunha <jefferson.cunha@totalip.com.br>
+
+[33mcommit 26f12aca3b232066af9928b05bede6ef9bbd6f98[m
+Author: Jefferson Cunha <jefferson.cunha@totalip.com.br>
+Date:   Tue Apr 22 16:41:27 2014 -0300
+
+    Criada insert e list do logradouros falata concluir logradouros e adicionar link valido no botão cadastrar do cliente e funcionario e criação da tabela tipo_uf
+    
+    Signed-off-by: Jefferson Cunha <jefferson.cunha@totalip.com.br>
+
+[33mcommit aa77f8742995e27c71bf4a99fb8a56d637bcd28b[m
+Author: Jefferson Silva <jefferson-descktop@localhost.localdomain>
+Date:   Fri Apr 18 01:15:22 2014 -0300
+
+    crud clientes motada falata obuscar e cadastro de logradouros e atualizar crud do funcionarios
+    
+    Signed-off-by: Jefferson Silva <jefferson-descktop@localhost.localdomain>
+
+[33mcommit bbccee33e31206ef54771b821bc4e3f969ee760a[m
+Author: Jefferson Cunha <jefferson.cunha@totalip.com.br>
+Date:   Thu Apr 17 16:17:42 2014 -0300
+
+    Criações e modificações de arquivos
+    
+    Signed-off-by: Jefferson Cunha <jefferson.cunha@totalip.com.br>
+
+[33mcommit 53f21147cb389d533ae0b352777e0ca8ec121c35[m
+Author: Jefferson Silva <jefferson-descktop@localhost.localdomain>
+Date:   Mon Apr 7 23:59:30 2014 -0300
+
+    arquivo sql
+
+[33mcommit 89e5cbe0cda53682dc4ed9194157b40af4d84208[m
+Author: Jefferson Silva <jeffersondasilva14@gmail.com>
+Date:   Mon Apr 7 15:30:35 2014 -0300
+
+    Alteração do arquivo sql
+
+[33mcommit b63a7c8a08fc92d8556f57cea606ebcacb6b4b29[m
+Author: Jefferson Silva <jeffersondasilva14@gmail.com>
+Date:   Fri Apr 4 15:18:04 2014 -0300
+
+    metar do modulo funcionario criado
+
+[33mcommit 637995a9fa3b4fad911d9829de1edc775b9481e3[m
+Author: Jefferson Silva <jeffersondasilva14@gmail.com>
+Date:   Fri Apr 4 12:03:20 2014 -0300
+
+    crud clientes montada mas sem ajustes
+    
+    Signed-off-by: Jefferson Silva <jeffersondasilva14@gmail.com>
+
+[33mcommit ef2b0c18f603dad16b1cf64e9884d7d58175ee2b[m
+Author: Jefferson Silva <jeffersondasilva14@gmail.com>
+Date:   Fri Apr 4 09:30:15 2014 -0300
+
+    commit de crud menos delet dos clientes
+
+[33mcommit b40872613bc51b6bcd02a80f5426136a6e37686d[m
+Author: Jefferson Silva <jeffersondasilva14@gmail.com>
+Date:   Thu Apr 3 13:48:38 2014 -0300
+
+    insert de cliente pornto
+
+[33mcommit eb33bf671722251b9afad1fccb7df63d05fe16a6[m
+Author: Jefferson Silva <jefferson@localhost.localdomain>
+Date:   Wed Apr 2 16:44:43 2014 -0300
+
+    formulario de cliente
+
+[33mcommit b54099b4b3647236428a93a721a76aeef9125cbf[m
+Author: Jefferson Silva <jefferson@localhost.localdomain>
+Date:   Wed Apr 2 15:04:59 2014 -0300
+
+    primeiro commit da aplicação

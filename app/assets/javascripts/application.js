@@ -13,8 +13,36 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require cep
 //= require jquery-1.11.1
 //= require_tree .
 
+function buscacep(){
+	if($.trim($("#cep").val()) != ""){
+		$("lcep").html("Pesquisando...") //mostra na viw do from uma menssagem
+		$.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep="+ $("#cep").val(),function(){
+			if(resultadoCEP["resultado"] == "1"){
+				$("#endereco").val(unescape(resultadoCEP["tipo_logradouro"]) + "," + unescape(resultadoCEP["logradouro"]));
+				$("#bairro").val(unescape(resultadoCEP["bairro"]));
+				$("#cidade").val(unescape(resultadoCEP["cidade"]));
+				$("#estado").val(unescape(resultadoCEP["uf"]));;
+
+				$("#numero").focus();
+			}
+			else{
+				$("#lcep").html("Cep não encotrado.");
+				$("#cep").focus();
+			}	
+			$("lcep").html(" ")	});	
+		}	
+	else{		
+		$("#lcep").html("Informe um cep.");		
+	}
+}
+
+function limpacampos(){
+	$("#endereco").val("");
+	$("#bairro").val("");
+	$("#cidade").val("");
+	$("#estado").val("");
+}
 

@@ -37,14 +37,15 @@
 					<tr>				
 						<td> CEP: </td>
 						<td>
-						 <%= f.text_field :cep , :size => "8" , :maxlegth => 8 , :id => "cep" %> 
+						 <%= f.text_field :cep , :size => "8" , :maxlegth => 8 , :id => "cep" , :onBlur => "buscacep()" , :onKeypress => "limpacampos()" %>
+						 <%= f.label " ", :id => "lcep" %> 
 						 <%= link_to "Localizar" , "#" %>
 						</td>
 					</tr>
 					<tr>
 						<td> Rua: </td> 
 						<td>
-						 <%= f.text_field :rua , :size => "35" , :id => "rua" %> 
+						 <%= f.text_field :endereco , :size => "35" , :id => "endereco" %> 
 							Número:
 							<%= f.number_field :numero , :id => "numero" %>							
 						</td>									
