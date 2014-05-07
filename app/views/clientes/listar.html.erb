@@ -1,9 +1,7 @@
 <h1> Lista de clientes </h1>
 
-<%= link_to image_tag("icones/add.ico"),  { action: 'novo', :controller => "clientes" , tp_cliente: "fisica"} %>
-<%= link_to "Cadastrar cliente PF",  { action: 'novo', :controller => "clientes" , tp_cliente: "fisica"} %>
-<%= link_to image_tag("icones/add.ico"), { action: 'novo', :controller => "clientes" , tp_cliente: "juridica"} %>
-<%= link_to "Cadastrar cliente PJ", { action: 'novo', :controller => "clientes" , tp_cliente: "juridica"} %>
+<%= link_to(image_tag("icones/add.ico"),  { action: 'novo', :controller => "clientes"} )%>
+<%= link_to "Adicionar",  { action: 'novo', :controller => "clientes"} %>
 	<table>
 		<tr>
 			<td> Nome</td>			
@@ -14,7 +12,7 @@
 		</tr>
 	<% @lista_clientes.each do |cliente| %>		
 		<tr>
-			<td> <%= cliente.nome %><%= cliente.raz_social %> </td>			
+			<td> <%= cliente.nome %><%= cliente.rz_social %> </td>			
 			<td> <%= cliente.tp_cliente %> </td>
 			<td>
 				<% if cliente.status == true %>
@@ -24,13 +22,13 @@
 				<% end %>
 			</td>
 			<td> 				
-				<%= cliente.dt_cadastro.strftime('%d/%m/%Y as %H:%M')%> 
+				<%= cliente.created_at.strftime('%d/%m/%Y as %H:%M')%> 
 			</td>
 
 			<td> 
-				<% if cliente.ultima_alteracao == nil %>
+				<% if cliente.updated_at == nil %>
 				<% else %>
-				<%= cliente.ultima_alteracao.strftime('%d/%m/%Y as %H:%M')%> 
+				<%= cliente.updated_at.strftime('%d/%m/%Y as %H:%M')%> 
 				<% end %>
 			</td>
 				

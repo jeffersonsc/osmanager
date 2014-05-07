@@ -18,7 +18,7 @@
 
 function buscacep(){
 	if($.trim($("#cep").val()) != ""){
-		$("lcep").html("Pesquisando...") //mostra na viw do from uma menssagem
+		$("#lcep").html("Pesquisando...") //mostra na viw do from uma menssagem
 		$.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep="+ $("#cep").val(),function(){
 			if(resultadoCEP["resultado"] == "1"){
 				$("#endereco").val(unescape(resultadoCEP["tipo_logradouro"]) + "," + unescape(resultadoCEP["logradouro"]));
@@ -32,10 +32,10 @@ function buscacep(){
 				$("#lcep").html("Cep não encotrado.");
 				$("#cep").focus();
 			}	
-			$("lcep").html(" ")	});	
+			$("#lcep").html(" ")	});	
 		}	
-	else{		
-		$("#lcep").html("Informe um cep.");		
+	else{			
+    $("#lcep").html("CEP foi encontrado ");	
 	}
 }
 
@@ -46,3 +46,16 @@ function limpacampos(){
 	$("#estado").val("");
 }
 
+function pessoaf(value) {
+  $("#pf").show();
+  $("#pf_dados").show();
+  $("#pj").hide();
+  $("#pj_dados").hide();
+}
+
+function pessoaj () {
+  $("#pj").show();
+  $("#pj_dados").show();
+  $("#pf").hide();
+  $("#pf_dados").hide();
+}

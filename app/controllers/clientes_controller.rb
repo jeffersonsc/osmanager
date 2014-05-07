@@ -10,30 +10,40 @@ class ClientesController < ApplicationController
 	end
 
 	def create
+		@cliente_novo = Cliente.new
+		@cliente_novo.tp_cliente = params[:cliente][:tp_cliente] if params[:cliente][:tp_cliente]
+		@cliente_novo.nome = params[:cliente][:nome] if params[:cliente][:nome]
+		@cliente_novo.endereco = params[:cliente][:sexo] if params[:cliente][:sexo]
+		@cliente_novo.dt_nacimento = params[:cliente][:dt_nacimento] if params[:cliente][:dt_nacimento]		
+		@cliente_novo.cep = params[:cliente][:cep] if params[:cliente][:cep]
+		@cliente_novo.endereco = params[:cliente][:endereco] if params[:cliente][:endereco]
+		@cliente_novo.numero = params[:cliente][:numero] if params[:cliente][:numero]
+		@cliente_novo.bairro = params[:cliente][:bairro] if params[:cliente][:bairro]
+		@cliente_novo.cidade = params[:cliente][:cidade] if params[:cliente][:cidade]
+		@cliente_novo.estado = params[:cliente][:estado] if params[:cliente][:estado]
+		@cliente_novo.email = params[:cliente][:email] if params[:cliente][:email]
+		@cliente_novo.telefone1 = params[:cliente][:telefone1] if params[:cliente][:telefone1]		
+		@cliente_novo.telefone2 = params[:cliente][:telefone2] if params[:cliente][:telefone2]
+		@cliente_novo.telefone3 = params[:cliente][:telefone3] if params[:cliente][:telefone3]
+		@cliente_novo.celular = params[:cliente][:celular] if params[:cliente][:celular]
+		@cliente_novo.rg = params[:cliente][:rg] if params[:cliente][:rg]
+		@cliente_novo.ssp = params[:cliente][:ssp] if params[:cliente][:ssp]
+		@cliente_novo.cpf = params[:cliente][:cpf] if params[:cliente][:cpf]
+		@cliente_novo.rz_social = params[:cliente][:rz_social] if params[:cliente][:rz_social]	
+		@cliente_novo.ie = params[:cliente][:ie] if params[:cliente][:ie]		
+		@cliente_novo.cnpj = params[:cliente][:cnpj] if params[:cliente][:cnpj]
+		@cliente_novo.updated_at = nill
 
-		
-		@criar_cliente = Cliente.find_by_sql(query)
-			flash[:notice] = "Cliente slavo com sucesso!"
-			redirect_to action: 'listar' 
-			
+		if @cliente_novo.save
+			flash[:notice] = "Cliente Salvo com sucesso"
+			redirect_to(:action => "listar")
+		else
+			flash[:error] = "Cliente não cadastrado"
+			render("novo")
+		end
 	end
 	def listar
-		@lista_clientes = Cliente.find_by_sql("
-				SELECT
-					clientes.id,
-					clientes.nome,
-					clientes.raz_social,				
-					tipos_cliente.nome tp_cliente,
-					clientes.status,
-					clientes.dt_cadastro,
-					clientes.ultima_alteracao
-				FROM
-					clientes
-					INNER JOIN tipos_cliente ON tipos_cliente.id = clientes.tp_cliente_id
-
-				ORDER BY
-					clientes.id ;
-		")	
+		@lista_clientes = Cliente.all
 	end
 	def exibir			
 			@exibir_clientes = Cliente.find_by_sql("

@@ -15,9 +15,14 @@
 </head>
 <body>
 	<% flash.each do |tipo , msg|%>
-		<div class="#{tipo}"> <%= msg %><%= image_tag("icones/OK.ico") %> </div>
+		<div class="#{tipo}">
+     <%= msg %> 
+     <% if tipo == notice %>
+      <%= image_tag("icones/OK.ico") %>     
+     <% end %>
+    </div>
 	<% end %>
-
+    
   <%= link_to "Menu" , :controller => "menu" , :action => "index" %>
   <%= link_to "Clientes" , :controller => "clientes" , :action => "listar" %>
   <%= link_to "Funcionario" , :controller => "funcionarios" , :action => "listar" %>

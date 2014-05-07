@@ -1,3 +1,15 @@
 <h1> Cadastrar Cliente </h1>
 
-<%= render "form_clientes" %>
+<div class="form">
+	<% if @cliente_novo.errors.any? %>
+	    <ul>
+	      <% @cliente_novo.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	      <% end %>
+	    </ul>
+	 <% end %>
+	<%= form_for(@cliente_novo) do |f| %>
+		<%= render(:partial => "form_clientes" , :locals => { :f => f} ) %>
+	<% end %>
+
+</div>

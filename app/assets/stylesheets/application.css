@@ -9,6 +9,14 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
- *= require_custon
+ *= require_tree . 
  */
+
+.form { margin: 0 10px; 
+				border: 1px solid;
+				border-radius: 10px; 
+				padding: 10px 10px 10px 10px;
+			}
+
+.pj {display: none;}
+.pf {display: inline;}
