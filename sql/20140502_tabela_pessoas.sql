@@ -1,7 +1,7 @@
 BEGIN;
 
 CREATE TABLE pessoas (
-id serial PRIMARY KEY NOT NULL,
+id SERIAL PRIMARY KEY NOT NULL,
 nome VARCHAR(100),
 sexo CHAR(1),
 dt_nacimento TIMESTAMP,

@@ -13,7 +13,7 @@ class ClientesController < ApplicationController
 		@cliente_novo = Cliente.new
 		@cliente_novo.tp_cliente = params[:cliente][:tp_cliente] if params[:cliente][:tp_cliente]
 		@cliente_novo.nome = params[:cliente][:nome] if params[:cliente][:nome]
-		@cliente_novo.endereco = params[:cliente][:sexo] if params[:cliente][:sexo]
+		@cliente_novo.sexo = params[:cliente][:sexo] if params[:cliente][:sexo]
 		@cliente_novo.dt_nacimento = params[:cliente][:dt_nacimento] if params[:cliente][:dt_nacimento]		
 		@cliente_novo.cep = params[:cliente][:cep] if params[:cliente][:cep]
 		@cliente_novo.endereco = params[:cliente][:endereco] if params[:cliente][:endereco]
@@ -32,76 +32,28 @@ class ClientesController < ApplicationController
 		@cliente_novo.rz_social = params[:cliente][:rz_social] if params[:cliente][:rz_social]	
 		@cliente_novo.ie = params[:cliente][:ie] if params[:cliente][:ie]		
 		@cliente_novo.cnpj = params[:cliente][:cnpj] if params[:cliente][:cnpj]
-		@cliente_novo.updated_at = nill
+		@cliente_novo.updated_at = ""
 
 		if @cliente_novo.save
 			flash[:notice] = "Cliente Salvo com sucesso"
 			redirect_to(:action => "listar")
 		else
-			flash[:error] = "Cliente não cadastrado"
-			render("novo")
+			render :action => "novo"
 		end
 	end
 	def listar
 		@lista_clientes = Cliente.all
 	end
 	def exibir			
-			@exibir_clientes = Cliente.find_by_sql("
-				SELECT
-					clientes.id,
-					clientes.nome,
-					clientes.raz_social,
-					logradouros.endereco,
-					clientes.endereco_n,
-					logradouros.bairro,
-					logradouros.cidade,
-					logradouros.uf,
-					clientes.telefone1,
-					clientes.telefone2,
-					clientes.telefone3,
-					clientes.celular,
-					clientes.rg,
-					clientes.cpf,
-					clientes.cnpj,
-					tipos_cliente.nome tp_cliente,
-					clientes.tp_cliente_id,
-					clientes.status,
-					clientes.dt_cadastro,
-					clientes.ultima_alteracao
-				FROM
-					clientes
-					INNER JOIN logradouros ON logradouros.id = clientes.endereco_id
-					INNER JOIN tipos_cliente ON tipos_cliente.id = clientes.tp_cliente_id
-
-				WHERE
-					clientes.id = #{params[:id]}
-			")
-		
-
+			@clientes = Cliente.where(:id => params[:id])
 	end
 	def  editar
-		@endereco = Logradouro.find_by_sql("
-			SELECT
-				id,	endereco,	bairro,	cidade,	uf
-			FROM
-				logradouros
-		")
-		
-		@editar_cliente = Cliente.find_by_sql ("SELECT * FROM clientes WHERE id = #{params[:id]}")
+		@clientes = Cliente.find(params[:id])		
 	end
 
 	def update
-		@editar_cliente = Cliente.find_by_sql("
-			UPDATE 
-				clientes
-			SET
-				nome = '#{params[:cliente][:nome]}', endereco_id = '#{params[:cliente][:endereco_id]}', endereco_n = '#{params[:cliente][:endereco_n]}', telefone1 = '#{params[:cliente][:telefone1]}',
-					telefone2 = '#{params[:cliente][:telefone2]}', telefone3 = '#{params[:cliente][:telefone3]}', celular = '#{params[:cliente][:celular]}', rg = '#{params[:cliente][:rg]}' ,
-					 tp_cliente_id = '#{params[:cliente][:tp_cliente_id]}' , status = '#{params[:cliente][:status]}', ultima_alteracao = '#{Time.now}'
-			WHERE 
-				clientes.id = #{params[:id]}
-
-		")
+		@editar_cliente = Cliente.find(params[:cliente][:id])
+			
 		flash[:notice] = "Cliente alterado com sucesso"
 		redirect_to action: 'editar' , id: params[:id]
 	end

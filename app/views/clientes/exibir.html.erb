@@ -1,20 +1,20 @@
-<h1> Cliente: <%= @exibir_clientes[0].nome %> </h1> 
+<h1> Cliente: <%= @clientes[0].nome %> </h1> 
 <div class="form">
 <table>
-	<% @exibir_clientes.each do |cliente| %>	
+	<% @clientes.each do |cliente| %>	
 			<tr>
-				<% if cliente.tp_cliente_id == 1 %>
+				<% if cliente.tp_cliente == true %>
 					<td> Nome</td>
 					<td> <%= cliente.nome %> </td>
-					<% if cliente.tp_cliente_id == 2 %>
+					<% if cliente.tp_cliente == false %>
 						<td> Razão Social</td>
-						<td> <%= cliente.raz_social %> </td>
+						<td> <%= cliente.rz_social %> </td>
 					<% end %>
 				<%end%>
 			</tr>
 			<tr>
 				<td> Endereço </td>
-				<td> <%= cliente.endereco %>, <%= cliente.endereco_n %> </td>
+				<td> <%= cliente.endereco %>, <%= cliente.numero %> </td>
 			</tr>
 			<tr>				
 				<td> Bairro </td>
@@ -22,7 +22,7 @@
 			</tr>
 			<tr>
 				<td> Cidade </td>
-				<td> <%= cliente.cidade %> UF: <%= cliente.uf %> </td>
+				<td> <%= cliente.cidade %> UF: <%= cliente.estado %> </td>
 			</tr>			
 			<tr>
 				<td> Telefone 1</td>
@@ -51,7 +51,7 @@
 			<tr>
 				<td> Status cliente </td>
 				<td>
-				<% if cliente.status == true %>
+				<% if cliente.status == false %>
 					Ativo
 					<% else %>
 					Bloqueado
@@ -60,13 +60,13 @@
 			</tr>
 			<tr>
 				<td> Criado em </td>
-				<td> <%= cliente.dt_cadastro.strftime('%d/%m/%Y as %H:%M') %></td>
+				<td> <%= cliente.created_at.strftime('%d/%m/%Y as %H:%M') %></td>
 			</tr>
 			<tr>
 				<td> Ultima alteração </td>
-				<td> <% if cliente.ultima_alteracao == nil %>
-					<% else %>
-					<%= cliente.ultima_alteracao.strftime('%d/%m/%Y as %H:%M')%> 
+				<td> 
+					<% if not cliente.updated_at.nil? %>					
+						<%= cliente.updated_at.strftime('%d/%m/%Y as %H:%M')%> 
 					<% end %>
 				</td>
 			</tr>
