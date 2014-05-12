@@ -13,10 +13,14 @@ class ClientesController < ApplicationController
 		@cliente_novo = Cliente.new
 		@cliente_novo.tp_cliente = params[:cliente][:tp_cliente] if params[:cliente][:tp_cliente]
 		@cliente_novo.nome = params[:cliente][:nome] if params[:cliente][:nome]
+		@cliente_novo.nome_mae = params[:cliente][:nome_mae] if params[:cliente][:nome_mae]
+		@cliente_novo.nome_pai = params[:cliente][:nome_pai] if params[:cliente][:nome_pai]
+		@cliente_novo.nome_responsavel = params[:cliente][:nome_responsavel] if params[:cliente][:nome_responsavel]
 		@cliente_novo.sexo = params[:cliente][:sexo] if params[:cliente][:sexo]
 		@cliente_novo.dt_nacimento = params[:cliente][:dt_nacimento] if params[:cliente][:dt_nacimento]		
 		@cliente_novo.cep = params[:cliente][:cep] if params[:cliente][:cep]
 		@cliente_novo.endereco = params[:cliente][:endereco] if params[:cliente][:endereco]
+		@cliente_novo.complemento = params[:cliente][:complemento] if params[:cliente][:complemento]
 		@cliente_novo.numero = params[:cliente][:numero] if params[:cliente][:numero]
 		@cliente_novo.bairro = params[:cliente][:bairro] if params[:cliente][:bairro]
 		@cliente_novo.cidade = params[:cliente][:cidade] if params[:cliente][:cidade]
@@ -32,7 +36,7 @@ class ClientesController < ApplicationController
 		@cliente_novo.rz_social = params[:cliente][:rz_social] if params[:cliente][:rz_social]	
 		@cliente_novo.ie = params[:cliente][:ie] if params[:cliente][:ie]		
 		@cliente_novo.cnpj = params[:cliente][:cnpj] if params[:cliente][:cnpj]
-		@cliente_novo.updated_at = ""
+		@cliente_novo.updated_at ||= ""
 
 		if @cliente_novo.save
 			flash[:notice] = "Cliente Salvo com sucesso"

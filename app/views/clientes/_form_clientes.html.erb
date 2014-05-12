@@ -1,67 +1,75 @@
 		<div id="tp_cliente">
-			Tipo de Cliente: 
+			<%= f.label "Tipo de cliente" %> 
 			<%= f.radio_button :tp_cliente , true , :onclick => "pessoaf()" %>	
-			Pessoa Física						 
+			<%= f.label "Pessoa física" %>						 
 			<%= f.radio_button :tp_cliente , false , :onclick => "pessoaj()" %>
-			Pessoa Jurídica
+			<%= f.label "Pessoa juridica" %>
 		</div>
 		<div id="pf" class="pf">		
-			Nome: 
-			<%= f.text_field :nome , :size => "40" %> <br /> 
-			Sexo: 
+			<%= f.label :nome %>
+			<%= f.text_field :nome , :size => "40" %> 
+			
+			<br /> 
+			<%= f.label :sexo %> 
 			<%= f.radio_button :sexo , 'm' %>
 			<%= f.label :sexo , "Masculino" %>
 			<%= f.radio_button :sexo , 'f' %>
 			<%= f.label :sexo , "Feminino" %>
-			|	Data de nascimento:
-			<%= f.date_field :dt_nacimento %>
+			<%= f.label "Data de nascimento:" %>
+			<%= f.date_field :dt_nacimento %> <br />
+
+			<%= f.label :rg %>
+			<%= f.text_field :rg , :size => "10" %>
+			<%= f.label :ssp %>
+			<%= f.text_field :ssp , :size => "2" %>
+			<%= f.label :cpf %>
+			<%= f.text_field :cpf , :size => "11" %> <br />
+			<%= f.label :nome_mae, "Nome da mãe" %>
+			<%= f.text_field :nome_mae , :size => "40" %>
+			<%= f.label :nome_mae, "Nome do pai" %>
+			<%= f.text_field :nome_pai , :size => "40" %>
 		</div>
 		<div id="pj" class="pj">
-			Razão Social: 
-			<%= f.text_field :rz_social , :size => "60" %>
+			<%= f.label :rz_social , "Razão social" %> 
+			<%= f.text_field :rz_social , :size => "60" %> <br />
+			<%= f.label :ie , "Inscrição social" %> 
+			<%= f.text_field :ie , :size => "10" %>
+			<%= f.label :conpj %>
+			<%= f.text_field :cnpj , :size => "15" %> <br />
+			<%= f.label :nome_responsavel, "Responsável da empresa" %>
+			<%= f.text_field :nome_responsavel , :size => "40" %>
 		</div>
 		<div id="endereco_clientes" >							
-			CEP: 
-			<%= f.text_field :cep , :size => "8" , :maxlegth => 8 , :id => "cep" , :onBlur => "buscacep()" , :onKeypress => "limpacampos()" %>
+			<%= f.label :cep %>
+			<%= f.text_field :cep , :size => "8" , :maxlegth => 8 , :id => "cep" , :onBlur => "buscacep()" , :onchanged => "limpacampos()" %>
 			<%= f.label " ", :id => "lcep" %> 
 			<%= link_to "Localizar" , "#" %> <br />			
-			Endereço:  
+			<%= f.label :endereco , "Endereço"%>  
 			<%= f.text_field :endereco , :size => "35" , :id => "endereco" %>
-			Número:
-			<%= f.number_field :numero , :id => "numero" %>	<br>						
-			Bairro: 
+			<%= f.label :numero , "Número" %>
+			<%= f.number_field :numero , :id => "numero" %>
+			<%= f.label :complemento %> 
+			<%= f.text_field :complemento , :id => "complemento" %>	<br />
+			<%= f.label :bairro %>  
 			<%= f.text_field :bairro , :size => "20" , :id => "bairro" %> 
-			Cidade:
+			<%= f.label :cidade %> 
 			<%= f.text_field :cidade , :size => "20" , :id => "cidade" %>
-			Estado:
+			<%= f.label :estado %> 
 			<%= f.text_field :estado , :size => "2" , :id => "estado"%>
 		</div>
 		<div id="dados_cliente">				
-			E-mail: 
+			<%= f.label :email %>  
 			<%= f.email_field :email , :size => "40" %> <br />
-			*Telefone 1: 
+			<%= f.label :telefone1 , "Telefone 1"%>  
 			<%= f.telephone_field :telefone1 %> 
-			Telefone 2: 
+			<%= f.label :telefone2 , "Telefone 2"%>
 			<%= f.telephone_field :telefone2 %> 
-			Telefone 3: 
+			<%= f.label :telefone3 , "Telefone 3"%>
 			<%= f.telephone_field :telefone3 %> 
-			*Celular: 
+			<%= f.label :celular , "Celular"%>
 			<%= f.telephone_field :celular %> 
-		</div>
-		<div id="pf_dados" class="pf">										
-			RG: 
-			<%= f.text_field :rg , :size => "10" %>
-			SSP:
-			<%= f.text_field :ssp , :size => "2" %>
-			CPF:
-			<%= f.text_field :cpf , :size => "11" %>
-		</div>
-		<div id="pj_dados" class="pj">
-			Inscrição Estadual: 
-			<%= f.text_field :ie , :size => "10" %>
-			CNPJ:
-			<%= f.text_field :cnpj , :size => "15" %>
-		</div>			
+		</div>		
+				
 		<div id="controles">			
 			<%= f.submit "Salvar" %> 
 			<%= f.submit("Limpar" , {:name => 'reset' , :id => 'reset_button' , :type => "reset"}) %> 

@@ -44,6 +44,7 @@ function limpacampos(){
 	$("#bairro").val("");
 	$("#cidade").val("");
 	$("#estado").val("");
+  $("#complemento").val("");
 }
 
 function pessoaf(value) {
