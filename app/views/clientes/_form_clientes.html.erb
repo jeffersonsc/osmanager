@@ -7,47 +7,47 @@
 </div>
 <div id="pf" class="pf">		
 	<%= f.label :nome %>
-	<%= f.text_field :nome , :size => "40" %> 
+	<%= f.text_field :nome , :size => "40" , :id => "nome" %> 
 	
 	<br /> 
 	<%= f.label :sexo %> 
-	<%= f.radio_button :sexo , 'm' %>
+	<%= f.radio_button :sexo , 'm' , :id => "sexo" %>
 	<%= f.label :sexo , "Masculino" %>
-	<%= f.radio_button :sexo , 'f' %>
+	<%= f.radio_button :sexo , 'f' , :id => "sexo" %>
 	<%= f.label :sexo , "Feminino" %>
 	<%= f.label "Data de nascimento:" %>
-	<%= f.text_field :dt_nacimento , :id => "dt_nacimento"%> <br />
+	<%= f.text_field :dt_nascimento , :id => "dt_nascimento"%> <br />
 
 	<%= f.label :rg %>
-	<%= f.text_field :rg , :size => "10" %>
+	<%= f.text_field :rg , :size => "10" , :id => "rg" %>
 	<%= f.label :ssp %>
-	<%= f.text_field :ssp , :size => "2" %>
+	<%= f.select :ssp , @ssp.map{|ssp| [ssp , ssp] } , :id => "ssp" , :include_blank => true %>
 	<%= f.label :cpf %>
-	<%= f.text_field :cpf , :size => "11" , :id => "cpf" , :onblur => "validarCPF()"%> <br />
+	<%= f.text_field :cpf , :size => "11" , :id => "cpf" , :onblur => "validarCPF(this.value);" %> <br />
 	<%= f.label :nome_mae, "Nome da mãe" %>
-	<%= f.text_field :nome_mae , :size => "40" %>
+	<%= f.text_field :nome_mae , :size => "40" , :id => "nome_mae" %>
 	<%= f.label :nome_mae, "Nome do pai" %>
-	<%= f.text_field :nome_pai , :size => "40" %>
+	<%= f.text_field :nome_pai , :size => "40" , :id => "nome_pai" %>
 </div>
 <div id="pj" class="pj">
 	<%= f.label :rz_social , "Razão social" %> 
-	<%= f.text_field :rz_social , :size => "60" %> <br />
+	<%= f.text_field :rz_social , :size => "60" , :id => "rz_social" %> <br />
 	<%= f.label :ie , "Inscrição social" %> 
-	<%= f.text_field :ie , :size => "10" %>
+	<%= f.text_field :ie , :size => "10" , :id => "ie"%>
 	<%= f.label :cnpj %>
-	<%= f.text_field :cnpj , :size => "15" , :id => "cnpj" %> <br />
+	<%= f.text_field :cnpj , :size => "15" , :id => "cnpj" , :onblur => "validarCNPJ(this.value)" %> <br />
 	<%= f.label :nome_responsavel, "Responsável da empresa" %>
-	<%= f.text_field :nome_responsavel , :size => "40" %>
+	<%= f.text_field :nome_responsavel , :size => "40" , :id => "nome_responsavel"%>
 </div>
 <div id="endereco_clientes" >							
 	<%= f.label :cep %>
 	<%= f.text_field :cep , :size => "8" , :maxlegth => "8" , :id => "cep" , :onBlur => "buscacep()" , :onchanged => "limpacampos()" %>
 	<%= f.label " ", :id => "lcep" %> 
-	<%= link_to "Localizar" , "#" %> <br />			
+	<%= link_to_function "Localizar endereço" , "window.open('http://www.buscacep.correios.com.br/', 'Busca de CEP', 'width=1024, height=600');" %> <br />			
 	<%= f.label :endereco , "Endereço"%>  
 	<%= f.text_field :endereco , :size => "35" , :id => "endereco" %>
 	<%= f.label :numero , "Número" %>
-	<%= f.number_field :numero , :id => "numero" %>
+	<%= f.number_field :numero , :id => "numero" , :id => "numero"%>
 	<%= f.label :complemento %> 
 	<%= f.text_field :complemento , :id => "complemento" %>	<br />
 	<%= f.label :bairro %>  
@@ -59,17 +59,18 @@
 </div>
 <div id="dados_cliente">				
 	<%= f.label :email %>  
-	<%= f.email_field :email , :size => "40" %> <br />
+	<%= f.email_field :email , :size => "40" , :id => "email" %> <br />
 	<%= f.label :telefone1 , "Telefone 1"%>  
-	<%= f.text_field :telefone1 , :id => "telefone1" %> 
+	<%= f.text_field :telefone1 , :id => "telefone1" %> <br />
 	<%= f.label :telefone2 , "Telefone 2"%>
-	<%= f.text_field :telefone2 , :id => "telefone2" %> 
+	<%= f.text_field :telefone2 , :id => "telefone2" %> <br />
 	<%= f.label :telefone3 , "Telefone 3"%>
-	<%= f.text_field :telefone3 , :id => "telefone3" %> 
-	<%= f.label :celular , "Celular"%>
+	<%= f.text_field :telefone3 , :id => "telefone3" %> </br />
+	<%= f.label :celular , "Celular"%> 
 	<%= f.text_field :celular , :id => "celular"%> 
 </div>		
-		
+
+<hr />	
 <div id="controles">			
 	<%= f.submit "Salvar" %> 
 	<%= f.submit("Limpar" , {:name => 'reset' , :id => 'reset_button' , :type => "reset"}) %> 
@@ -78,49 +79,14 @@
 <% javascript_include_tag "jquery.maskedinput"%>
 
 <script>
-	jQuery(function($){
+jQuery(function($){
    $("#cpf").mask("999.999.999-99");
    $("#cnpj").mask("99.999.999/9999-99");
    $("#cep").mask("99999-999");
-   $("#dt_nacimento").mask("99/99/9999");
+   $("#dt_nascimento").mask("99/99/9999");
    $("#telefone1").mask("(99) 9999-9999");
    $("#telefone2").mask("(99) 9999-9999");
    $("#telefone3").mask("(99) 9999-9999");
    $("#celular").mask("(99) 99999-9999");
 });
-</script>
-<script>
-	function validarCPF() {		
-		var cpf;
-		cpf = $("#cpf");
-		//cpf = replace(/[^\d]+/g,'');
-	  if(cpf == ''){
-	   alert("cpf inválido 1")
-	  
-	   }
-	    if (cpf.length != 11 || cpf == "00000000000" || cpf == "1111111" || cpf == "22222222222" || cpf == "33333333333" || cpf == "44444444444" || cpf == "55555555555" || cpf == "66666666666"|| cpf == "77777777777" || cpf == "88888888888" || cpf == "99999999999"){
-	    	alert("cpf inválido 2")
-	    
-	  }
-	     // Valida 1o digito add = 0;
-	     var add = 0
-	     for (i=0; i < 9; i ++)
-	       add += parseInt(cpf.charAt(i)) * (10 - i);
-	       rev = 11 - (add % 11);
-	       if (rev == 10 || rev == 11)rev = 0;
-	       if (rev != parseInt(cpf.charAt(9))){
-	       	alert("cpf inválido 3")
-	       	
-	       }       	
-	       
-	      // Valida 2o digito add = 0;
-	      var add = 0
-	       for (i = 0; i < 10; i ++)
-	       	add += parseInt(cpf.charAt(i)) * (11 - i);
-	       	rev = 11 - (add % 11);
-	       	if (rev == 10 || rev == 11) rev = 0;
-	       	if (rev != parseInt(cpf.charAt(10))){
-	       		alert("cpf inválido")
-	       }
-	      return true;   }
 </script>

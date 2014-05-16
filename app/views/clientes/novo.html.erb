@@ -1,7 +1,7 @@
 <h1> Cadastrar Cliente </h1>
 
 <div class="form">	
-	<%= form_for(@cliente_novo) do |f| %>
+	<%= form_for(@cliente_novo , :html => {:name => "form" , :multpart => true}) do |f| %>
 		<% if @cliente_novo.errors.any? %>
 	    <ul>
 	      <% @cliente_novo.errors.full_messages.each do |msg| %>

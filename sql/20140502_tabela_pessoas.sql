@@ -1,13 +1,13 @@
 BEGIN;
 
 CREATE TABLE pessoas (
-id SERIAL PRIMARY KEY NOT NULL,
+id SERIAL PRIMARY KEY,
 nome VARCHAR(100),
 nome_mae VARCHAR(100),
 nome_pai VARCHAR(100),
 nome_responsavel VARCHAR(100),
 sexo CHAR(1),
-dt_nacimento TIMESTAMP,
+dt_nascimento TIMESTAMP,
 rz_social VARCHAR(100),
 cep INTEGER,
 endereco VARCHAR(100),

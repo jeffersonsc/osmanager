@@ -7,17 +7,32 @@ class ClientesController < ApplicationController
 
 	def novo
 		@cliente_novo = Cliente.new
+		@ssp = ["AC","AL", "AP", "AM", "BA", "CE", "DF" , "ES" , "GO" ,
+						"MA" , "MT" , "MS" , "MG" , "PA" , "PB" , "PR" , "PE" ,
+						"PI", "RJ" , "RN" , "RS" , "RO" , "RR" , "SC" , "SP" ,
+						"SE" , "TO"]
 	end
 
 	def create
 		@cliente_novo = Cliente.new
-		@cliente_novo.tp_cliente = params[:cliente][:tp_cliente] if params[:cliente][:tp_cliente]
-		@cliente_novo.nome = params[:cliente][:nome] if params[:cliente][:nome]
-		@cliente_novo.nome_mae = params[:cliente][:nome_mae] if params[:cliente][:nome_mae]
-		@cliente_novo.nome_pai = params[:cliente][:nome_pai] if params[:cliente][:nome_pai]
-		@cliente_novo.nome_responsavel = params[:cliente][:nome_responsavel] if params[:cliente][:nome_responsavel]
-		@cliente_novo.sexo = params[:cliente][:sexo] if params[:cliente][:sexo]
-		@cliente_novo.dt_nacimento = params[:cliente][:dt_nacimento] if params[:cliente][:dt_nacimento]		
+		if params[:cliente][:tp_cliente] == true
+			@cliente_novo.tp_cliente = params[:cliente][:tp_cliente] if params[:cliente][:tp_cliente]
+			@cliente_novo.nome = params[:cliente][:nome] if params[:cliente][:nome]
+			@cliente_novo.nome_mae = params[:cliente][:nome_mae] if params[:cliente][:nome_mae]
+			@cliente_novo.nome_pai = params[:cliente][:nome_pai] if params[:cliente][:nome_pai]		
+			@cliente_novo.sexo = params[:cliente][:sexo] if params[:cliente][:sexo]
+			@cliente_novo.dt_nacimento = params[:cliente][:dt_nacimento] if params[:cliente][:dt_nacimento]		
+			@cliente_novo.rg = params[:cliente][:rg] if params[:cliente][:rg]
+			@cliente_novo.ssp = params[:cliente][:ssp] if params[:cliente][:ssp]
+			@cliente_novo.cpf = params[:cliente][:cpf] if params[:cliente][:cpf]
+
+		else
+			@cliente_novo.nome_responsavel = params[:cliente][:nome_responsavel] if params[:cliente][:nome_responsavel]
+			@cliente_novo.rz_social = params[:cliente][:rz_social] if params[:cliente][:rz_social]	
+			@cliente_novo.ie = params[:cliente][:ie] if params[:cliente][:ie]		
+			@cliente_novo.cnpj = params[:cliente][:cnpj] if params[:cliente][:cnpj]
+		end
+
 		@cliente_novo.cep = params[:cliente][:cep] if params[:cliente][:cep]
 		@cliente_novo.endereco = params[:cliente][:endereco] if params[:cliente][:endereco]
 		@cliente_novo.complemento = params[:cliente][:complemento] if params[:cliente][:complemento]
@@ -29,20 +44,15 @@ class ClientesController < ApplicationController
 		@cliente_novo.telefone1 = params[:cliente][:telefone1] if params[:cliente][:telefone1]		
 		@cliente_novo.telefone2 = params[:cliente][:telefone2] if params[:cliente][:telefone2]
 		@cliente_novo.telefone3 = params[:cliente][:telefone3] if params[:cliente][:telefone3]
-		@cliente_novo.celular = params[:cliente][:celular] if params[:cliente][:celular]
-		@cliente_novo.rg = params[:cliente][:rg] if params[:cliente][:rg]
-		@cliente_novo.ssp = params[:cliente][:ssp] if params[:cliente][:ssp]
-		@cliente_novo.cpf = params[:cliente][:cpf] if params[:cliente][:cpf]
-		@cliente_novo.rz_social = params[:cliente][:rz_social] if params[:cliente][:rz_social]	
-		@cliente_novo.ie = params[:cliente][:ie] if params[:cliente][:ie]		
-		@cliente_novo.cnpj = params[:cliente][:cnpj] if params[:cliente][:cnpj]
-		@cliente_novo.updated_at ||= ""
+		@cliente_novo.celular = params[:cliente][:celular] if params[:cliente][:celular]		
+		
+		@cliente_novo.updated_at = "9999-99-99"
 
 		if @cliente_novo.save
 			flash[:notice] = "Cliente Salvo com sucesso"
 			redirect_to(:action => "listar")
 		else
-			render :action => "novo"
+			render 'novo'
 		end
 	end
 	def listar
