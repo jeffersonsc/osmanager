@@ -40,8 +40,8 @@
 	<%= f.text_field :nome_responsavel , :size => "40" , :id => "nome_responsavel"%>
 </div>
 <div id="endereco_clientes" >							
-	<%= f.label :cep %>
-	<%= f.text_field :cep , :size => "8" , :maxlegth => "8" , :id => "cep" , :onBlur => "buscacep()" , :onchanged => "limpacampos()" %>
+	<%= f.label :cep %>	
+	<%= f.text_field :cep , :size => "8" , :maxlegth => "8" , :id => "cep" , :onBlur => "buscacep(this.value)" , :onchanged => "limpacampos()" %>
 	<%= f.label " ", :id => "lcep" %> 
 	<%= link_to_function "Localizar endereço" , "window.open('http://www.buscacep.correios.com.br/', 'Busca de CEP', 'width=1024, height=600');" %> <br />			
 	<%= f.label :endereco , "Endereço"%>  

@@ -1,7 +1,7 @@
 def validate_form	
   errors.add(:base , 'Nome é obrigatório') if self.nome.empty?
   errors.add(:base , 'Sexo é obrigatório') if self.sexo.blank?
-  errors.add(:base , 'A datade nascimento é obrigatório') if self.dt_nacimento.blank?
+  errors.add(:base , 'A datade nascimento é obrigatório') if self.dt_nascimento.blank?
 	errors.add(:base , 'RG é obrigatório') if self.rg.blank?
 	errors.add(:base , 'SSP é obrigatório') if self.ssp.blank?
 	errors.add(:base , 'CPF é obrigatório') if self.cpf.blank?	

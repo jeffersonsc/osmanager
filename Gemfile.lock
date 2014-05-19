@@ -127,6 +127,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   execjs
+  i18n
   jbuilder (~> 1.2)
   jquery-rails
   less-rails
