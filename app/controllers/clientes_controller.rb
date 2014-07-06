@@ -1,4 +1,3 @@
-require 'open-uri'
 class ClientesController < ApplicationController
 
 	def index
@@ -6,7 +5,7 @@ class ClientesController < ApplicationController
 	end
 
 	def novo
-		@cliente_novo = Cliente.new
+		@cliente = Cliente.new
 		@ssp = ["AC","AL", "AP", "AM", "BA", "CE", "DF" , "ES" , "GO" ,
 						"MA" , "MT" , "MS" , "MG" , "PA" , "PB" , "PR" , "PE" ,
 						"PI", "RJ" , "RN" , "RS" , "RO" , "RR" , "SC" , "SP" ,
@@ -33,7 +32,7 @@ class ClientesController < ApplicationController
 			@cliente_novo.cnpj = params[:cliente][:cnpj] if params[:cliente][:cnpj]
 		end
 
-		@cliente_novo.cep = params[:cliente][:cep].to_i if params[:cliente][:cep].to_i
+		@cliente_novo.cep = params[:cliente][:cep].to_s if params[:cliente][:cep].to_s
 		@cliente_novo.endereco = params[:cliente][:endereco] if params[:cliente][:endereco]
 		@cliente_novo.complemento = params[:cliente][:complemento] if params[:cliente][:complemento]
 		@cliente_novo.numero = params[:cliente][:numero] if params[:cliente][:numero]
@@ -89,7 +88,7 @@ class ClientesController < ApplicationController
 			@editar_cliente.cnpj = params[:cliente][:cnpj] if params[:cliente][:cnpj]
 		end
 
-		@editar_cliente.cep = params[:cliente][:cep].to_s if params[:cliente][:cep].to_s
+		@editar_cliente.cep = params[:cliente][:cep] if params[:cliente][:cep]
 		@editar_cliente.endereco = params[:cliente][:endereco] if params[:cliente][:endereco]
 		@editar_cliente.complemento = params[:cliente][:complemento] if params[:cliente][:complemento]
 		@editar_cliente.numero = params[:cliente][:numero] if params[:cliente][:numero]

@@ -1,3 +1,12 @@
+<script>
+	
+		$(document).ready(){
+			function{
+				$("#endereco").hide();
+			}
+		}	
+</script>
+
 <h1> Cliente: <%= @clientes[0].nome %> </h1> 
 <div class="form">
 	<table>
@@ -10,36 +19,38 @@
 						<td> Razão Social</td>
 						<td> <%= cliente.rz_social %> </td>
 					<% end %>
-				<%end%>
+				<%end%>			
 			</tr>
-			<tr>
-				<td> CEP </td>
-				<td> <%= cliente.cep %> </td>
-			</tr>
-			<tr>
-				<td> Endereço </td>
-				<td> <%= cliente.endereco %>, <%= cliente.numero %> </td>
-			</tr>
-			<tr>				
-				<td> Bairro </td>
-				<td> <%= cliente.bairro %> </td>
-			</tr>
-			<tr>
-				<td> Cidade </td>
-				<td> <%= cliente.cidade %> UF: <%= cliente.estado %> </td>
-			</tr>			
-			<tr>
-				<td> Telefone 1</td>
-				<td> <%= cliente.telefone1 %> </td>
-			</tr>
-			<tr>
-				<td> Telefone 2</td>
-				<td> <%= cliente.telefone2 %> </td>
-			</tr>
-			<tr>
-				<td> Telefone 3</td>
-				<td> <%= cliente.telefone3 %> </td>
-			</tr>
+			<div id="endereco" style="background-color: red;">
+				<tr>
+					<td> CEP </td>
+					<td> <%= cliente.cep %> </td>
+				</tr>
+				<tr>
+					<td> Endereço </td>
+					<td> <%= cliente.endereco %>, <%= cliente.numero %> </td>
+				</tr>
+				<tr>				
+					<td> Bairro </td>
+					<td> <%= cliente.bairro %> </td>
+				</tr>
+				<tr>
+					<td> Cidade </td>
+					<td> <%= cliente.cidade %> UF: <%= cliente.estado %> </td>
+				</tr>			
+				<tr>
+					<td> Telefone 1</td>
+					<td> <%= cliente.telefone1 %> </td>
+				</tr>
+				<tr>
+					<td> Telefone 2</td>
+					<td> <%= cliente.telefone2 %> </td>
+				</tr>
+				<tr>
+					<td> Telefone 3</td>
+					<td> <%= cliente.telefone3 %> </td>
+				</tr>
+			</div>
 			<tr>
 				<td> Celular </td>
 				<td> <%= cliente.celular %> </td>

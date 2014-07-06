@@ -1,0 +1,10 @@
+<div id="pj" class="pj">
+	<%= f.label :rz_social , "Razão social" %> 
+	<%= f.text_field :rz_social , :size => "60" , :id => "rz_social" %> <br />
+	<%= f.label :ie , "Inscrição social" %> 
+	<%= f.text_field :ie , :size => "10" , :id => "ie"%>
+	<%= f.label :cnpj %>
+	<%= f.text_field :cnpj , :size => "15" , :id => "cnpj" , :onblur => "validarCNPJ(this.value)" %> <br />
+	<%= f.label :nome_responsavel, "Responsável da empresa" %>
+	<%= f.text_field :nome_responsavel , :size => "40" , :id => "nome_responsavel"%>
+</div>

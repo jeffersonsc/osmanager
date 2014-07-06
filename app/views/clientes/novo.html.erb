@@ -1,7 +1,7 @@
-<h1> Cadastrar Cliente </h1>
+<h1> Cadastrar Cliente  </h1>
 
 <div class="form">	
-	<%= form_for(@cliente_novo , :html => {:name => "form" , :multpart => true}) do |f| %>
+	<%= form_for(@cliente , :method => :post) do |f| %>
 		<% if @cliente_novo.errors.any? %>
 	    <ul>
 	      <% @cliente_novo.errors.full_messages.each do |msg| %>
@@ -9,7 +9,35 @@
 	      <% end %>
 	    </ul>
 	 <% end %>
-		<%= render(:partial => "form_clientes" , :locals => { :f => f} ) %>
-	<% end %>
+		
+		<% if params[:tp_cliente] == "pf" %>
+			<%= render(:partial => "form_pf" , :locals => { :f => f} ) %>
+		<% elsif params[:tp_cliente] == "pj" %>
+			<%= render(:partial => "form_pj" , :locals => { :f => f} ) %>
+		<% end %>
+		<%= render(:partial => "dados" , :locals => { :f => f} ) %>
 
+		<hr />	
+		<div id="controles">			
+			<%= f.submit "Salvar" %> 
+			<%= f.submit("Limpar" , {:name => 'reset' , :id => 'reset_button' , :type => "reset"}) %> 
+		</div>
+	<% end %>
 </div>
+
+<% javascript_include_tag "jquery.maskedinput"%>
+
+<script>
+	jQuery(function($){
+		$("#cpf").mask("999.999.999-99");
+		$("#cnpj").mask("99.999.999/9999-99");
+		$("#cep").mask("99999-999");
+		$("#dt_nascimento").mask("99/99/9999");
+		$("#telefone1").mask("(99) 9999-9999");
+		$("#telefone2").mask("(99) 9999-9999");
+		$("#telefone3").mask("(99) 9999-9999");
+		$("#celular").mask("(99) 99999-9999");
+	});
+</script>
+
+<%= link_to "Voltar" , {:controller => "clientes" , :action => "index"}%>

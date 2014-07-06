@@ -1,0 +1,30 @@
+<div id="pf" class="pf">		
+	<%= f.label :nome %>
+	<%= f.text_field :nome , :size => "40" , :id => "nome" %> 
+	
+	<br /> 
+	<%= f.label :sexo %> 
+	<%= f.radio_button :sexo , 'm' , :id => "sexo" %>
+	<%= f.label :sexo , "Masculino" %>
+	<%= f.radio_button :sexo , 'f' , :id => "sexo" %>
+	<%= f.label :sexo , "Feminino" %>
+	<%= f.label "Data de nascimento:" %>
+	<%= f.date_field :dt_nascimento , :id => "dt_nascimento" %> <br />
+
+	<%= f.label :rg %>
+	<%= f.text_field :rg , :size => "10" , :id => "rg" %>
+	<%= f.label :ssp %>
+	<%= f.select :ssp , @ssp.map{|ssp| [ssp , ssp] } , :id => "ssp" , :include_blank => true %>
+	<%= f.label :cpf %>
+	<%= f.text_field :cpf , :size => "11" , :id => "cpf" , :onblur => "validarCPF(this.value);" %> <br />
+	<%= f.label :nome_mae, "Nome da mãe" %>
+	<%= f.text_field :nome_mae , :size => "40" , :id => "nome_mae" %>
+	<%= f.label :nome_mae, "Nome do pai" %>
+	<%= f.text_field :nome_pai , :size => "40" , :id => "nome_pai" %>
+</div>
+
+
+
+
+
+

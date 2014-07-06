@@ -1,0 +1,30 @@
+<div id="endereco_clientes" >							
+	<%= f.label :cep %>	
+	<%= f.text_field :cep , :size => "8" , :maxlegth => "8" , :id => "cep" , :onblur => "buscacep(this.value)" , :onchanged => "limpacampos()" %>
+	<%= f.label " ", :id => "lcep" %> 
+	<%= link_to_function "Localizar endereço" , "window.open('http://www.buscacep.correios.com.br/', 'Busca de CEP', 'width=1024, height=600');" %> <br />			
+	<%= f.label :endereco , "Endereço"%>  
+	<%= f.text_field :endereco , :size => "35" , :id => "endereco" %>
+	<%= f.label :numero , "Número" %>
+	<%= f.number_field :numero , :id => "numero" , :id => "numero"%>
+	<%= f.label :complemento %> 
+	<%= f.text_field :complemento , :id => "complemento" %>	<br />
+	<%= f.label :bairro %>  
+	<%= f.text_field :bairro , :size => "20" , :id => "bairro" %> 
+	<%= f.label :cidade %> 
+	<%= f.text_field :cidade , :size => "20" , :id => "cidade" %>
+	<%= f.label :estado %> 
+	<%= f.text_field :estado , :size => "2" , :id => "estado"%>
+</div>
+<div id="dados_cliente">				
+	<%= f.label :email %>  
+	<%= f.email_field :email , :size => "40" , :id => "email" %> <br />
+	<%= f.label :telefone1 , "Telefone 1"%>  
+	<%= f.text_field :telefone1 , :id => "telefone1" %> <br />
+	<%= f.label :telefone2 , "Telefone 2"%>
+	<%= f.text_field :telefone2 , :id => "telefone2" %> <br />
+	<%= f.label :telefone3 , "Telefone 3"%>
+	<%= f.text_field :telefone3 , :id => "telefone3" %> </br />
+	<%= f.label :celular , "Celular"%> 
+	<%= f.text_field :celular , :id => "celular"%> 
+</div>		

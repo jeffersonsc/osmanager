@@ -19,7 +19,7 @@
 
 function buscacep(){
 	if($.trim($("#cep").val()) != ""){
-		$("#lcep").html("Pesquisando...") //mostra na viw do from uma menssagem
+		$("#lcep").html("Pesquisando...") //mostra na viw do form uma menssagem
 		$.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep="+ $("#cep").val(),function(){
 			if(resultadoCEP["resultado"] == "1"){
 				$("#endereco").val(unescape(resultadoCEP["tipo_logradouro"]) + "," + unescape(resultadoCEP["logradouro"]));

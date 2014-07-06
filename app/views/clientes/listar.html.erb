@@ -1,15 +1,15 @@
 <h1> Lista de clientes </h1>
 
-<%= link_to(image_tag("icones/add.ico"),  { action: 'novo', :controller => "clientes"} )%>
-<%= link_to "Adicionar",  { action: 'novo', :controller => "clientes"} %>
-	<table>
-		<tr>
-			<td> Nome</td>			
-			<td> Tipo Cliente</td>
-			<td> Status cliente </td>
-			<td> Cadastrado em </td>
-			<td> Ultima alteração </td>
-		</tr>
+<%= link_to "Adicionar PF",  { action: 'novo', :controller => "clientes"  ,:tp_cliente => "pf" } %>
+<%= link_to "Adicionar PJ",  { action: 'novo', :controller => "clientes" , :tp_cliente => "pj"} %>
+<table>
+	<tr>
+		<td> Nome</td>			
+		<td> Tipo Cliente</td>
+		<td> Status cliente </td>
+		<td> Cadastrado em </td>
+		<td> Ultima alteração </td>
+	</tr>
 	<% @lista_clientes.each do |cliente| %>		
 		<tr>
 			<td> <%= cliente.nome %><%= cliente.rz_social %> </td>			
